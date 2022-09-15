@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastre-se</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Data de nascimento</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Endereço</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Bairro</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <div>
+      <ion-item>
+        <ion-label position="floating">Cidade</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Estado</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">CEP</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-button (onclick)="handleRegister()">Cadastre-se</ion-button>
+    <span routerLink="/login"> Já possui cadastro? Faça o login</span>
+  </div>
+</ion-content>

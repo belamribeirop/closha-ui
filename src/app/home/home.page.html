@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-title size="large">Home</ion-title>
+    <ion-icon name="contact"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div>
+      <h2>Alugar</h2>
+      <div>
+        <ion-slides
+          class="slider"
+          pager="false"
+          [options]="slideOpts"
+          #slideWithNav2
+          (ionSlideDidChange)="slideDidChange(slider,slideWithNav2)"
+        >
+          <ion-slide *ngFor="let s of alugueis">
+            <img [src]="s.img" />
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+    <div>
+      <h2>Comprar</h2>
+      <div>
+        <ion-slides
+          class="slider"
+          pager="false"
+          [options]="slideOpts"
+          #slideWithNav2
+          (ionSlideDidChange)="slideDidChange(slider,slideWithNav2)"
+        >
+          <ion-slide *ngFor="let s of compras">
+            <img [src]="s.img" />
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+    <div>
+      <h2>Visto por último</h2>
+      <div>
+        <ion-slides
+          class="slider"
+          pager="false"
+          [options]="slideOpts"
+          #slideWithNav2
+          (ionSlideDidChange)="slideDidChange(slider,slideWithNav2)"
+        >
+          <ion-slide *ngFor="let s of vistas">
+            <img [src]="s.img" />
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </div>
+  </div>
+</ion-content>
