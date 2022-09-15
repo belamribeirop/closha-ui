@@ -1,0 +1,7 @@
+{
+  "name": "CloshaUI",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
