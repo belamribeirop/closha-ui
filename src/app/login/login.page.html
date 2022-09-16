@@ -5,18 +5,25 @@
 </ion-header>
 
 <ion-content>
-  <div class="container">
+  <form
+    class="form"
+    class="container"
+    [formGroup]="userLogin"
+    (ngSubmit)="handleLogin()"
+  >
     <div class="logo">
       <img src="../../assets/logo.jpeg" />
     </div>
     <ion-item>
-      <ion-label position="floating">Username / Email</ion-label>
-      <ion-input></ion-input> </ion-item
+      <ion-label position="stacked" ngDefaultControl
+        >Username / Email</ion-label
+      >
+      <ion-input formControlName="email"></ion-input> </ion-item
     ><ion-item>
-      <ion-label position="floating">Senha</ion-label>
-      <ion-input></ion-input>
+      <ion-label position="stacked" ngDefaultControl>Senha</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
-    <ion-button (onclick)="handleLogin()">Login</ion-button>
+    <ion-button type="submit" (onclick)="handleLogin()">Login</ion-button>
     <span routerLink="/register"> Cadastre-se</span>
-  </div>
+  </form>
 </ion-content>

@@ -2,20 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { User } from '../login/login.service';
 
-export interface User {
-  id: number;
-  username: string;
-  name: string;
-  email: string;
-  birthDate: Date;
-}
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class RegisterService {
   constructor(private http: HttpClient) {}
-  autheticate(credentials: any): Observable<User> {
-    return this.http.post<User>(`${environment.api}/authenticate`, credentials);
+  register(user: any): Observable<boolean> {
+    return this.http.post<boolean>(`${environment.api}/register`, user);
   }
 }

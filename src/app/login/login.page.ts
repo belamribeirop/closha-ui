@@ -1,6 +1,7 @@
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  constructor(private router: Router, private LoginService: LoginService) {}
+  userLogin = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  });
+  constructor(
+    private router: Router,
+    private LoginService: LoginService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {}
   handleLogin() {
-    this.LoginService.autheticate().subscribe({
+    this.LoginService.autheticate(this.userLogin.value).subscribe({
       next: () => {
         this.router.navigate(['/tabs/home']);
       },
