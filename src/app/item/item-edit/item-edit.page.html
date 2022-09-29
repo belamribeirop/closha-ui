@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastrar peça</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form
+    class="form"
+    class="container"
+    [formGroup]="itemForm"
+    (ngSubmit)="handleSave()"
+  >
+    <ion-item>
+      <ion-label position="stacked" ngDefaultControl>Foto da peça</ion-label>
+      <ion-input
+        accept="image/png, image/jpeg"
+        type="file"
+        name="arquivos"
+        class="btn btn-success"
+        formControlName="photo"
+        required
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked" ngDefaultControl>Nome</ion-label>
+      <ion-input formControlName="name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked" ngDefaultControl>Preço</ion-label>
+
+      <ion-input
+        placeholder="R$0.00"
+        inputmode="decimal"
+        formControlName="price"
+        name="amount"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked" ngDefaultControl>Descrição</ion-label>
+      <ion-textarea formControlName="description" required></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-list>
+        <h6>Estado da peça</h6>
+
+        <ion-radio-group formControlName="state">
+          <div *ngFor="let state of states">
+            <ion-item>
+              <ion-label> {{state.label}} </ion-label>
+              <ion-radio slot="start" [value]="state.key"></ion-radio>
+            </ion-item>
+          </div>
+        </ion-radio-group>
+      </ion-list>
+    </ion-item>
+    <ion-item
+      ><ion-list>
+        <h6>Tipo de negociação</h6>
+
+        <ion-radio-group formControlName="type">
+          <div *ngFor="let type of types">
+            <ion-item>
+              <ion-label>{{type.label}}</ion-label>
+              <ion-radio slot="start" [value]="type.key"></ion-radio>
+            </ion-item>
+          </div>
+        </ion-radio-group>
+      </ion-list>
+    </ion-item>
+    <ion-button type="submit">Salvar</ion-button>
+  </form>
+</ion-content>
