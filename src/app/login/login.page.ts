@@ -15,13 +15,13 @@ export class LoginPage implements OnInit {
   });
   constructor(
     private router: Router,
-    private LoginService: LoginService,
+    private loginService: LoginService,
     private fb: FormBuilder
   ) {}
 
   ngOnInit() {}
   handleLogin() {
-    this.LoginService.autheticate(this.userLogin.value).subscribe({
+    this.loginService.autheticate(this.userLogin.value).subscribe({
       next: () => {
         this.router.navigate(['/tabs/home']);
       },

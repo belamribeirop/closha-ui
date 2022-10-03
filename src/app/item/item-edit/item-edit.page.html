@@ -31,9 +31,9 @@
 
       <ion-input
         placeholder="R$0.00"
-        inputmode="decimal"
         formControlName="price"
-        name="amount"
+        type="number"
+        currencyFormatter
       ></ion-input>
     </ion-item>
     <ion-item>
@@ -44,7 +44,7 @@
       <ion-list>
         <h6>Estado da peça</h6>
 
-        <ion-radio-group formControlName="state">
+        <ion-radio-group formControlName="status">
           <div *ngFor="let state of states">
             <ion-item>
               <ion-label> {{state.label}} </ion-label>
@@ -58,7 +58,7 @@
       ><ion-list>
         <h6>Tipo de negociação</h6>
 
-        <ion-radio-group formControlName="type">
+        <ion-radio-group formControlName="negociationType">
           <div *ngFor="let type of types">
             <ion-item>
               <ion-label>{{type.label}}</ion-label>

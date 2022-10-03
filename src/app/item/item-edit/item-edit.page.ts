@@ -1,4 +1,4 @@
-import { Item, ItemService, State } from './../item.service';
+import { Item, ItemService, State, NegociationType } from './../item.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -13,11 +13,12 @@ export class ItemEditPage implements OnInit {
     id: [0],
     name: ['', Validators.required],
     description: ['', Validators.required],
-    price: [0, Validators.required],
+    price: [null, Validators.required],
     tags: [[], Validators.required],
-    photo: ['', Validators.required],
-    type: [null, Validators.required],
-    state: [null, Validators.required],
+    image: ['', Validators.required],
+    category: [null, Validators.required],
+    negociationType: [null, Validators.required],
+    status: [null, Validators.required],
   });
 
   states = [
@@ -37,7 +38,19 @@ export class ItemEditPage implements OnInit {
 
   ngOnInit() {}
   handleSave() {
-    this.itemService.post(this.itemForm.value as Item).subscribe({
+    const item: Item = {
+      id: 0,
+      name: this.itemForm.value.name,
+      description: this.itemForm.value.description,
+      price: this.itemForm.value.price,
+      status: this.itemForm.value.status,
+      negociationType: this.itemForm.value.negociationType,
+      category: this.itemForm.value.category,
+      image: this.itemForm.value.image,
+      tags: this.itemForm.value.tags,
+      ownerId: 0,
+    };
+    this.itemService.post(item).subscribe({
       next: () => {
         this.router.navigate(['/tabs/home']);
       },

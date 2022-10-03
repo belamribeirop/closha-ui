@@ -1,80 +1,15 @@
-import { Component } from '@angular/core';
-export interface Item {
-  id: number;
-  img: string;
-}
+import { Item, ItemService } from './../item/item.service';
+import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-  alugueis: Item[] = [
-    {
-      id: 1,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 2,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 3,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 4,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 5,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-  ];
-  compras: Item[] = [
-    {
-      id: 1,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 2,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 3,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 4,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 5,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-  ];
-  vistas: Item[] = [
-    {
-      id: 1,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 2,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 3,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 4,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-    {
-      id: 5,
-      img: 'https://ph-cdn3.ecosweb.com.br/imagens01/foto/moda-feminina/camisetas-e-baby-look/blusa-em-helanca-com-decote-v-preta_44497_600_1.jpg',
-    },
-  ];
+export class HomePage implements OnInit {
+  alugueis: Item[] = [];
+  compras: Item[] = [];
+
   slideOpts = {
     initialSlide: 0,
     slidesPerView: 3,
@@ -85,7 +20,13 @@ export class HomePage {
     isBeginningSlide: true,
     isEndSlide: false,
   };
-  constructor() {}
+  constructor(private itemService: ItemService) {}
+  ngOnInit(): void {
+    this.itemService.get().subscribe((data) => {
+      this.alugueis = data.filter((item) => item.negociationType === 1);
+      this.compras = data.filter((item) => item.negociationType === 0);
+    });
+  }
 
   slideDidChange(object, slideView) {
     this.checkIfNavDisabled(object, slideView);

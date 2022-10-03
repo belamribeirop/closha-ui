@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar style="color: #eaae88">
+  <ion-toolbar class="title">
     <ion-title size="large">Home</ion-title>
     <ion-icon name="contact"></ion-icon>
   </ion-toolbar>
@@ -17,7 +17,7 @@
           (ionSlideDidChange)="slideDidChange(slider,slideWithNav2)"
         >
           <ion-slide *ngFor="let s of alugueis">
-            <img [src]="s.img" />
+            <img [src]="s.image" />
           </ion-slide>
         </ion-slides>
       </div>
@@ -33,7 +33,7 @@
           (ionSlideDidChange)="slideDidChange(slider,slideWithNav2)"
         >
           <ion-slide *ngFor="let s of compras">
-            <img [src]="s.img" />
+            <img [src]="s.image" />
           </ion-slide>
         </ion-slides>
       </div>
@@ -48,16 +48,14 @@
           #slideWithNav2
           (ionSlideDidChange)="slideDidChange(slider,slideWithNav2)"
         >
-          <ion-slide *ngFor="let s of vistas">
-            <img [src]="s.img" />
+          <ion-slide *ngFor="let s of alugueis">
+            <img [src]="s.image" />
           </ion-slide>
         </ion-slides>
       </div>
     </div>
     <div class="addbutton">
-      <ion-button routerLink="/item-edit">
-        <ion-icon name="add-circle-outline"></ion-icon>
-      </ion-button>
+      <ion-icon routerLink="/item-edit" name="add-circle-outline"></ion-icon>
     </div>
   </div>
 </ion-content>
